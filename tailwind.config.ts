@@ -52,6 +52,12 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				'sidebar-bg': 'hsl(var(--sidebar-bg))',
+				'sidebar-border': 'hsl(var(--sidebar-border))',
+				'sidebar-hover': 'hsl(var(--sidebar-hover))',
+				'calendar-header': 'hsl(var(--calendar-header))',
+				'activity-card': 'hsl(var(--activity-card))',
+				'weekly-summary': 'hsl(var(--weekly-summary))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
