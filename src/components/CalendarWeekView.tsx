@@ -1,4 +1,4 @@
-import { ChevronDown, MoreHorizontal } from "lucide-react";
+import { ChevronDown, MoreHorizontal, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
@@ -16,7 +16,11 @@ const calendarEvents: any[] = [];
 
 const weeklyTotals = [0, 0, 0, 0, 0, 0, 0];
 
-export const CalendarWeekView = () => {
+interface CalendarWeekViewProps {
+  onAddActivity: (dayIndex: number) => void;
+}
+
+export const CalendarWeekView = ({ onAddActivity }: CalendarWeekViewProps) => {
   return (
     <div className="space-y-4">
       {/* Date Range Header */}
@@ -46,26 +50,39 @@ export const CalendarWeekView = () => {
         {weekDays.map((day, dayIndex) => (
           <div
             key={`${day.short}-body`}
-            className="min-h-[200px] p-2 border-r border-b border-border last:border-r-0 bg-card space-y-1"
+            className="min-h-[200px] p-2 border-r border-b border-border last:border-r-0 bg-card space-y-1 group relative hover:bg-muted/30 transition-colors"
           >
             {calendarEvents
               .filter(event => event.day === dayIndex)
               .map((event, eventIndex) => (
                 <div
                   key={eventIndex}
-                  className={`p-2 rounded text-xs ${event.color} relative group`}
+                  className={`p-2 rounded text-xs ${event.color} relative group/event`}
                 >
                   <div className="font-medium">{event.title}</div>
                   <div className="text-xs opacity-80">{event.duration}</div>
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="absolute top-1 right-1 h-4 w-4 opacity-0 group-hover:opacity-100"
+                    className="absolute top-1 right-1 h-4 w-4 opacity-0 group-hover/event:opacity-100"
                   >
                     <MoreHorizontal className="h-3 w-3" />
                   </Button>
                 </div>
               ))}
+            
+            {/* Add Activity Button - Shows on hover */}
+            <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-xs text-primary hover:text-primary-foreground hover:bg-primary gap-1"
+                onClick={() => onAddActivity(dayIndex)}
+              >
+                <Plus className="h-3 w-3" />
+                Tambah Aktivitas
+              </Button>
+            </div>
           </div>
         ))}
       </div>

@@ -14,10 +14,32 @@ import { Textarea } from "@/components/ui/textarea";
 interface AddActivityModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  selectedDate?: Date;
 }
 
-export const AddActivityModal = ({ open, onOpenChange }: AddActivityModalProps) => {
-  const [date, setDate] = useState<Date>();
+const projects = [
+  "EDTS-ADMIN-ADMIN-ONBENCH",
+  "EDTS-ADMIN-ADMIN-OTHER", 
+  "EDTS-ADMIN-ADMIN-TRAINING",
+  "EDTS-ADMIN-ADMIN-LEAVE",
+  "EDTS-ADMIN-ADMIN-ROUTINE",
+  "GURIH-CORP-GURIHMART-DEVELOPMENT",
+  "INDOMARET-MKT-POINKU-DEVELOPMENT",
+  "KLIK-CORP-KLIK-DEVELOPMENT",
+];
+
+const activities = [
+  "Monitoring / Feedback / Operational",
+  "Research / Planning",
+  "Gather Requirement", 
+  "Review/Evaluation",
+  "Documentation",
+  "Project Setup",
+  "Bugs Fixing",
+];
+
+export const AddActivityModal = ({ open, onOpenChange, selectedDate }: AddActivityModalProps) => {
+  const [date, setDate] = useState<Date>(selectedDate || new Date());
   const [selectedProject, setSelectedProject] = useState("");
   const [selectedActivity, setSelectedActivity] = useState("");
   const [workingHours, setWorkingHours] = useState("");
@@ -86,9 +108,11 @@ export const AddActivityModal = ({ open, onOpenChange }: AddActivityModalProps) 
                 <SelectValue placeholder="Cari atau Pilih Proyek" />
               </SelectTrigger>
               <SelectContent className="bg-popover">
-                <SelectItem value="edts-admin">EDTS-ADMIN</SelectItem>
-                <SelectItem value="edts-training">EDTS-TRAINING</SelectItem>
-                <SelectItem value="edts-development">EDTS-DEVELOPMENT</SelectItem>
+                {projects.map((project) => (
+                  <SelectItem key={project} value={project}>
+                    {project}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </div>
@@ -103,11 +127,11 @@ export const AddActivityModal = ({ open, onOpenChange }: AddActivityModalProps) 
                 <SelectValue placeholder="Pilih Aktivitas" />
               </SelectTrigger>
               <SelectContent className="bg-popover">
-                <SelectItem value="annual-leave">Annual Leave</SelectItem>
-                <SelectItem value="training">Training</SelectItem>
-                <SelectItem value="sharing-session">Sharing Session</SelectItem>
-                <SelectItem value="development">Development</SelectItem>
-                <SelectItem value="meeting">Meeting</SelectItem>
+                {activities.map((activity) => (
+                  <SelectItem key={activity} value={activity}>
+                    {activity}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </div>
