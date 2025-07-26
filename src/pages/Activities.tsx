@@ -20,18 +20,9 @@ export const Activities = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-          {/* Activity Cards */}
+          {/* Activity Cards - Empty state */}
           <div className="lg:col-span-1 space-y-4">
-            <ActivityCard
-              title="EDTS-ADMIN"
-              subtitle="ADMIN-LEAVE - Annual Leave"
-              color="bg-orange-400"
-            />
-            <ActivityCard
-              title="EDTS-ADMIN"
-              subtitle="ADMIN-TRAINING - Sharing Session"
-              color="bg-orange-400"
-            />
+            {/* No activities to show */}
           </div>
 
           {/* Calendar */}

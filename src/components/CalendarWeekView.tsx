@@ -3,21 +3,18 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
 const weekDays = [
-  { short: "Sen", full: "Senin", date: "21" },
-  { short: "Sel", full: "Selasa", date: "22" },
-  { short: "Rab", full: "Rabu", date: "23" },
-  { short: "Kam", full: "Kamis", date: "24" },
-  { short: "Jum", full: "Jumat", date: "25" },
-  { short: "Sab", full: "Sabtu", date: "26" },
-  { short: "Min", full: "Minggu", date: "27" },
+  { short: "Sen", full: "Senin", date: "14" },
+  { short: "Sel", full: "Selasa", date: "15" },
+  { short: "Rab", full: "Rabu", date: "16" },
+  { short: "Kam", full: "Kamis", date: "17" },
+  { short: "Jum", full: "Jumat", date: "18" },
+  { short: "Sab", full: "Sabtu", date: "19" },
+  { short: "Min", full: "Minggu", date: "20" },
 ];
 
-const calendarEvents = [
-  { day: 2, title: "Annual Leave", duration: "4 Hours", color: "bg-purple-100 text-purple-700" },
-  { day: 2, title: "Sharing Session", duration: "5 Hours", color: "bg-blue-100 text-blue-700" },
-];
+const calendarEvents: any[] = [];
 
-const weeklyTotals = [5, 0, 4, 0, 0, 0, 0];
+const weeklyTotals = [0, 0, 0, 0, 0, 0, 0];
 
 export const CalendarWeekView = () => {
   return (
@@ -25,7 +22,7 @@ export const CalendarWeekView = () => {
       {/* Date Range Header */}
       <div className="flex items-center gap-2">
         <Button variant="outline" className="gap-2">
-          📅 21 Juli 2025 - 27 Juli 2025
+          📅 14 Juli 2025 - 20 Juli 2025
           <ChevronDown className="h-4 w-4" />
         </Button>
       </div>
@@ -80,7 +77,7 @@ export const CalendarWeekView = () => {
             Total Jam Kerja Mingguan
           </div>
           <div className="col-span-1 text-right">
-            <span className="text-sm font-medium">9/40</span>
+            <span className="text-sm font-medium">0/40</span>
           </div>
           {weeklyTotals.map((total, index) => (
             <div key={index} className="text-center">
